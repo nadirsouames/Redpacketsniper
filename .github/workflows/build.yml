@@ -22,12 +22,11 @@ jobs:
           java-version: '17'
 
       - name: Setup Android SDK
-        uses: android-actions/setup-android@v3
+        uses: android-actions/setup-android@v4
 
-      - name: Install Android Build Tools
+      - name: Install Android packages
         run: |
           sdkmanager "platform-tools" "build-tools;34.0.0" "platforms;android-34"
-          echo "$ANDROID_HOME/build-tools/34.0.0" >> $GITHUB_PATH
 
       - name: Build APK
         uses: digreatbrian/buildozer-action@v1
