@@ -9,8 +9,9 @@ source.include_exts = py,png,jpg,kv,atlas
 
 version = 0.1
 
-requirements = python3,kivy==2.3.1,requests
+requirements = python3==3.13.2,hostpython3==3.13.2,kivy==2.3.1,requests
 
+p4a.branch = develop
 orientation = portrait
 fullscreen = 0
 
