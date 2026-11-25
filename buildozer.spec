@@ -18,7 +18,7 @@ android.permissions = INTERNET,ACCESS_NETWORK_STATE,POST_NOTIFICATIONS
 
 android.api = 35
 android.minapi = 23
-
+android.accept_sdk_license = True
 android.archs = arm64-v8a
 
 [buildozer]
