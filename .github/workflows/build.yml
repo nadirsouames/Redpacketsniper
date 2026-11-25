@@ -36,9 +36,17 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y git zip unzip autoconf libtool pkg-config zlib1g-dev libncurses5-dev libncursesw5-dev libtinfo6 cmake
+          sudo apt-get install -y \
+            git zip unzip autoconf automake autopoint gettext \
+            libtool pkg-config zlib1g-dev libncurses5-dev \
+            libncursesw5-dev libtinfo6 cmake libffi-dev libssl-dev
           python -m pip install --upgrade pip
           python -m pip install buildozer cython==0.29.36
+
+      - name: Clean old build
+        run: |
+          rm -rf .buildozer
+          rm -rf bin
 
       - name: Build APK
         run: |
@@ -49,3 +57,5 @@ jobs:
         with:
           name: RedPacketSniper-APK
           path: bin/*.apk
+          if-no-files-found: error
+          
