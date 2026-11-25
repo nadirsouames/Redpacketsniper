@@ -15,7 +15,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Java 17
+      - name: Setup Java
         uses: actions/setup-java@v4
         with:
           distribution: temurin
@@ -24,12 +24,22 @@ jobs:
       - name: Setup Android SDK
         uses: android-actions/setup-android@v4
 
-      - name: Install Android packages
+      - name: Install Android SDK packages
         run: |
-          sdkmanager "platform-tools" "build-tools;34.0.0" "platforms;android-34"
+          sdkmanager --install "platform-tools" "platforms;android-35" "build-tools;35.0.0"
+          sdkmanager --list_installed
+          find "$ANDROID_HOME" -name aidl -type f
+
+      - name: Install Buildozer
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y python3-pip python3-venv git zip unzip
+          pip install --user buildozer cython==0.29.36
 
       - name: Build APK
-        uses: digreatbrian/buildozer-action@v1
+        run: |
+          export PATH="$HOME/.local/bin:$PATH"
+          buildozer android debug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
