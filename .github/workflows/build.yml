@@ -15,6 +15,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
       - name: Setup Java
         uses: actions/setup-java@v4
         with:
@@ -27,18 +32,16 @@ jobs:
       - name: Install Android SDK packages
         run: |
           sdkmanager --install "platform-tools" "platforms;android-35" "build-tools;35.0.0"
-          sdkmanager --list_installed
-          find "$ANDROID_HOME" -name aidl -type f
 
-      - name: Install Buildozer
+      - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y python3-pip python3-venv git zip unzip
-          pip install --user buildozer cython==0.29.36
+          sudo apt-get install -y git zip unzip autoconf libtool pkg-config zlib1g-dev libncurses5-dev libncursesw5-dev libtinfo6 cmake
+          python -m pip install --upgrade pip
+          python -m pip install buildozer cython==0.29.36
 
       - name: Build APK
         run: |
-          export PATH="$HOME/.local/bin:$PATH"
           buildozer android debug
 
       - name: Upload APK
@@ -46,4 +49,3 @@ jobs:
         with:
           name: RedPacketSniper-APK
           path: bin/*.apk
-          
