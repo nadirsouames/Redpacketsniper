@@ -8,6 +8,12 @@ from kivy.core.window import Window
 from kivy.metrics import dp, sp
 from datetime import datetime
 
+# TELEGRAM API CONFIGURATION
+API_ID = 31592332
+API_HASH = "09e145b89fcc0e9fb1567bc0933c5854"
+PHONE_NUMBER = "+213671369313"
+CHANNEL_USERNAME = "binance_red_packetz"
+
 
 class RedPacketSniper(App):
 
