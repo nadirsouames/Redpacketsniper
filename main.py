@@ -17,8 +17,8 @@ from kivy.uix.button import Button
 from kivy.uix.textinput import TextInput
 from kivy.uix.scrollview import ScrollView
 
-from telethon import TelegramClient, events
-from telethon.errors import SessionPasswordNeededError
+# from telethon import TelegramClient, events
+# from telethon.errors import SessionPasswordNeededError
 
 
 # TELEGRAM API CONFIGURATION
