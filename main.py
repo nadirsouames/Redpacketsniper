@@ -129,7 +129,7 @@ class RedPacketSniper(App):
             size_hint_y=None,
             height=dp(48),
             font_size=sp(14),
-            padding=dp(10)
+            padding=[dp(10), dp(10), dp(10), dp(10)]
         )
         root.add_widget(field)
         return field
