@@ -10,7 +10,7 @@ source.include_exts = py,png,jpg,kv,atlas
 
 version = 0.1
 
-requirements = python3,kivy==2.3.1,requests,telethon
+requirements = python3,kivy==2.3.1,requests,telethon,pyaes
 
 p4a.branch = develop
 
